@@ -1,0 +1,10 @@
+package test5;
+
+public class CallInoutProc extends Object{
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package mms.member.vo;
+//2. 회원 한명의 정보를 저장하는 클래스
+public class Member {
+	
+	Private int id;
+	Private String name; //식별값
+	Private String addr;
+	Private String nation;
+	Private String email;
+	Private int age;
+	
+	
+}
