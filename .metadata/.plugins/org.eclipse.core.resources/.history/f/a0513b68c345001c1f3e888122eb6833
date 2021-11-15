@@ -10,9 +10,7 @@ public class MemberUI {
 
 	public static void main(String[] args) {
 		
-		System.out.print("Push 연습");
-		
-		System.out.println("commit-push 연습1");
+		System.out.println("Pull 연습");
 		
 		boolean isStop = false;
 		MemberController memberController = new MemberController();
