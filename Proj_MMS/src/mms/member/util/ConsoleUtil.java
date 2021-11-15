@@ -3,13 +3,32 @@ package mms.member.util;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import mms.member.vo.Member;
 //키보드 입력
 public class ConsoleUtil {
-	
-	public Member getNewMember(Scanner sc) {
-		return new Member();
+//	1.회원 등록
+	public Member getMember(Scanner sc) {
+		System.out.println("등록할 회원정보를 입력하세요?");
+		System.out.println("이름 : ");
+		String name = sc.next();
+		
+		
+		System.out.println("주소 : ");
+		String addr = sc.next();
+		
+		
+		System.out.println("국가 : ");
+		String nation = sc.next();
+		
+		
+		System.out.println("이메일 : ");
+		String email = sc.next();
+		
+		
+		System.out.println("나이 : ");
+		int age = sc.nextInt();
+		System.out.println(name + " 회원 정보 입력 성공");
+		return new Member(name, addr, nation, email, age);
 	}
 	
 	public void printAddSuccessMessage(Member newMember) {
@@ -25,13 +44,13 @@ public class ConsoleUtil {
 	}
 	
 	public String getName(String msgkind, Scanner sc) {
+		
 		return msgkind;
 		
 	}
 	
 	public Member getUpdateMember(Scanner sc, Member oldMember) {
 		return oldMember;
-		
 	}
 	
 	public void printModifySuccessMessage(Member updateMember) {
