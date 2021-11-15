@@ -1,5 +1,5 @@
 package mms.member.ui;
-//3. »ç¿ëÀÚ°¡ ¸Ş´º¸¦ ¼±ÅÃÇÒ ¼ö ÀÖ´Â È­¸éÀ» ±¸¼ºÇØ ÁÖ´Â Å¬·¡½º
+//3. ì‚¬ìš©ìê°€ ë©”ë‰´ë¥¼ ì„ íƒí•  ìˆ˜ ìˆëŠ” í™”ë©´ì„ êµ¬ì„±í•´ ì£¼ëŠ” í´ë˜ìŠ¤
 import java.util.Scanner;
 
 import mms.member.action.Action;
@@ -10,22 +10,24 @@ public class MemberUI {
 
 	public static void main(String[] args) {
 		
+		System.out.println("Pull ì—°ìŠµ");
+		
 		boolean isStop = false;
 		MemberController memberController = new MemberController();
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("=====È¸¿ø°ü¸® ÇÁ·Î±×·¥=====");
-			System.out.println("1.È¸¿øµî·Ï");
-			System.out.println("2.È¸¿ø¸ñ·Ïº¸±â");
-			System.out.println("3.È¸¿øÁ¤º¸¼öÁ¤");
-			System.out.println("4.È¸¿øÁ¤º¸»èÁ¦");
-			System.out.println("5.ÇÁ·Î±×·¥Á¾·á");
-			System.out.println("¸Ş´º¹øÈ£ : ");
+			System.out.println("=====íšŒì›ê´€ë¦¬ í”„ë¡œê·¸ë¨=====");
+			System.out.println("1.íšŒì›ë“±ë¡");
+			System.out.println("2.íšŒì›ëª©ë¡ë³´ê¸°");
+			System.out.println("3.íšŒì›ì •ë³´ìˆ˜ì •");
+			System.out.println("4.íšŒì›ì •ë³´ì‚­ì œ");
+			System.out.println("5.í”„ë¡œê·¸ë¨ì¢…ë£Œ");
+			System.out.println("ë©”ë‰´ë²ˆí˜¸ : ");
 			int menu = sc.nextInt();
 			Action action = null;
 			switch(menu) {
 			case 1:
-				action = new MemberAddAction();//1.È¸¿øµî·Ï
+				action = new MemberAddAction();//1.íšŒì›ë“±ë¡
 				break;
 				
 				
