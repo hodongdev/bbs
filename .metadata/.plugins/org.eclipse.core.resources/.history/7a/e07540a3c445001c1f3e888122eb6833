@@ -14,8 +14,6 @@ public class MemberUI {
 		
 		System.out.println("commit-push 연습1");
 		
-		System.out.println("slave branch 연습1");
-		
 		boolean isStop = false;
 		MemberController memberController = new MemberController();
 		Scanner sc = new Scanner(System.in);
