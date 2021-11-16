@@ -1,16 +1,16 @@
 package mms.member.vo;
-//2. È¸¿ø ÇÑ¸íÀÇ Á¤º¸¸¦ ÀúÀåÇÏ´Â Å¬·¡½º
+//2. íšŒì› í•œëª…ì˜ ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” í´ë˜ìŠ¤
 public class Member {
 	
 	private int id;
-	private String name; //½Äº°°ª
+	private String name; //ì‹ë³„ê°’
 	private String addr;
 	private String nation;
 	private String email;
 	private int age;
 	
 	
-//	id Á¦¿Ü: sequence »ç¿ëÇÏ¹Ç·Î
+//	id ì œì™¸: sequence ì‚¬ìš©í•˜ë¯€ë¡œ
 	public Member(String name, String addr, String nation, String email, int age) {
 		super();
 		this.name = name;

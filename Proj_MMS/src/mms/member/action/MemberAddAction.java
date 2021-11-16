@@ -1,5 +1,5 @@
 package mms.member.action;
-//7-1 È¸¿øµî·Ï ¿äÃ» Ã³¸®ÇÏ´Â Action Å¬·¡½º ±¸Çö
+//7. íšŒì›ë“±ë¡
 import java.util.Scanner;
 
 import mms.member.svc.MemberAddService;
@@ -11,7 +11,7 @@ public class MemberAddAction implements Action {
 	@Override
 	public void execute(Scanner sc) throws Exception {
 		ConsoleUtil cu = new ConsoleUtil();
-		Member newMember = cu.getMember(sc);//È¸¿øµî·Ï ÀÔ·Â ¿Ï¼º³»¿ë
+		Member newMember = cu.getMember(sc);//íšŒì›ë“±ë¡ ì…ë ¥ ì™„ì„±ë‚´ìš©
 		MemberAddService memberAddService = new MemberAddService();
 		boolean isAddSuccess = memberAddService.addMember(newMember);
 		if(isAddSuccess) {

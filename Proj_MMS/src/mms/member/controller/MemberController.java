@@ -1,5 +1,5 @@
 package mms.member.controller;
-//6. »ç¿ëÀÚÀÇ ÀüÃ¼ ¿äÃ»À» Á¦¾îÇÏ´Â Å¬·¡½º ±¸Çö
+//6. ì‚¬ìš©ìì˜ ì „ì²´ ìš”ì²­ì„ ì œì–´í•˜ëŠ” í´ë˜ìŠ¤ êµ¬í˜„
 import java.util.Scanner;
 
 import mms.member.action.Action;

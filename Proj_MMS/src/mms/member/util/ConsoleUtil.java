@@ -1,72 +1,98 @@
 package mms.member.util;
-//5. »ç¿ëÀÚ·ÎºÎÅÍÀÇ ÀÔ·ÂÀ» ÄÜ¼Ö¿¡¼­ ÀĞ¾î µéÀÌ°Å³ª ÄÜ¼Ö·Î ¸Ş½ÃÁö¸¦ Ãâ·ÂÇÏ´Â ¿ªÇÒÀ» ÇÏ´Â Å¬·¡½º ±¸Çö
+//5.ì‚¬ìš©ìë¡œë¶€í„°ì˜ ì…ë ¥ì„ ì½˜ì†”ì—ì„œ ì½ì–´ ë“¤ì´ê±°ë‚˜ ì½˜ì†”ë¡œ ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•˜ëŠ” ì—­í• ì„ í•˜ëŠ” í´ë˜ìŠ¤ êµ¬í˜„
+import java.util.ArrayList;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import mms.member.vo.Member;
-//Å°º¸µå ÀÔ·Â
+
 public class ConsoleUtil {
-//	1.È¸¿ø µî·Ï
+
 	public Member getMember(Scanner sc) {
-		System.out.println("µî·ÏÇÒ È¸¿øÁ¤º¸¸¦ ÀÔ·ÂÇÏ¼¼¿ä?");
-		System.out.println("ÀÌ¸§ : ");
+		System.out.println("ë“±ë¡í•  íšŒì› ì •ë³´ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+		System.out.print("ì´ë¦„ : ");
 		String name = sc.next();
 		
 		
-		System.out.println("ÁÖ¼Ò : ");
+		System.out.print("ì£¼ì†Œ : ");
 		String addr = sc.next();
 		
 		
-		System.out.println("±¹°¡ : ");
+		System.out.print("êµ­ê°€ : ");
 		String nation = sc.next();
 		
 		
-		System.out.println("ÀÌ¸ŞÀÏ : ");
+		System.out.print("ì´ë©”ì¼ : ");
 		String email = sc.next();
 		
 		
-		System.out.println("³ªÀÌ : ");
+		System.out.print("ë‚˜ì´ : ");
 		int age = sc.nextInt();
-		System.out.println(name + " È¸¿ø Á¤º¸ ÀÔ·Â ¼º°ø");
+		System.out.println(name + " íšŒì› ì •ë³´ ì¶”ê°€ ì„±ê³µ");
 		return new Member(name, addr, nation, email, age);
 	}
 	
 	public void printAddSuccessMessage(Member newMember) {
-		System.out.println(newMember.getName() + "È¸¿ø Á¤º¸ Ãß°¡ ¼º°ø");
+		System.out.println(newMember.getName() + "íšŒì› ì •ë³´ ì¶”ê°€ ì„±ê³µ");
 	}
 	
 	public void printAddFailMessage(Member newMember) {
-		System.out.println(newMember.getName() + "È¸¿ø Á¤º¸ Ãß°¡ ½ÇÆĞ");
+		System.out.println(newMember.getName() + "íšŒì› ì •ë³´ ì¶”ê°€ ì‹¤íŒ¨");
 	}
 	
+//	2. select all ì¶œë ¥
 	public void printMemberList(ArrayList<Member> memberList) {
-		//size() : ÄÃ·º¼Ç¿¡ ÀúÀåµÇ¾î ÀÖ´Â ¿ä¼ÒÀÇ °³¼ö¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+		//size() : ì»¬ë ‰ì…˜ì— ì €ì¥ë˜ì–´ ìˆëŠ” ìš”ì†Œì˜ ê°œìˆ˜ë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
+		for(int i=0; i<memberList.size(); i++) {
+			System.out.println(memberList.get(i));
+		}
 	}
 	
+//	3.update
+//	ìˆ˜ì •í•  íšŒì› ì •ë³´ ì–»ì–´ ì˜¤ê¸°
 	public String getName(String msgkind, Scanner sc) {
-		
-		return msgkind;
+		System.out.println(msgkind+" íšŒì›ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”");
+		System.out.print("íšŒì› ì´ë¦„ : ");
+		return sc.next();
 		
 	}
 	
+//	ìˆ˜ì •í•  íšŒì›ì •ë³´
 	public Member getUpdateMember(Scanner sc, Member oldMember) {
-		return oldMember;
+		System.out.print("ì´ì „ êµ­ê°€ : " + oldMember.getNation());
+		System.out.print("ìˆ˜ì •í•  êµ­ê°€ : ");
+		String nation = sc.next();
+		
+		System.out.print("ì´ì „ ì£¼ì†Œ : " + oldMember.getAddr());
+		System.out.print("ìˆ˜ì •í•  ì£¼ì†Œ : ");
+		String addr = sc.next();
+		
+		System.out.print("ì´ì „ ì´ë©”ì¼ : " + oldMember.getEmail());
+		System.out.print("ìˆ˜ì •í•  ì´ë©”ì¼ : ");
+		String email = sc.next();
+		
+		System.out.print("ì´ì „ ë‚˜ì´ : " + oldMember.getAge());
+		System.out.print("ìˆ˜ì •í•  ë‚˜ì´ : ");
+		int age = sc.nextInt();
+		
+		return new Member(oldMember.getName(), addr, nation, email, age);
 	}
 	
 	public void printModifySuccessMessage(Member updateMember) {
-		System.out.println(updateMember.getName() + "È¸¿ø Á¤º¸ ¼öÁ¤ ¼º°ø");
+		System.out.println(updateMember.getName() + "íšŒì› ì •ë³´ ìˆ˜ì • ì„±ê³µ");
 	}
 	
 	public void printModifyFailMessage(Member updateMember) {
-		System.out.println(updateMember.getName() + "È¸¿ø Á¤º¸ ¼öÁ¤ ½ÇÆĞ");
+		System.out.println(updateMember.getName() + "íšŒì› ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨");
 	}
 	
 	public void printRemoveSuccessMessage(String name) {
-		System.out.println(name + "È¸¿øÀÇ Á¤º¸ »èÁ¦ ¼º°ø.");
+		System.out.println(name + "íšŒì› ì •ë³´ ì‚­ì œ ì„±ê³µ");
 	}
 	
 	public void printRemoveFailMessage(String name) {
-		System.out.println(name + "È¸¿øÀÇ Á¤º¸ »èÁ¦ ½ÇÆĞ");
+		System.out.println(name + "íšŒì› ì •ë³´ ì‚­ì œ ì‹¤íŒ¨");
 	}
 
 }

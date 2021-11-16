@@ -28,11 +28,11 @@ public class CRUDConnection {
 			}
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("Driver°¡ ¾øÀ½:: ÇØ´ç Å¬·¡½º¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("Driverê°€ ì—†ìŒ:: í•´ë‹¹ í´ë˜ìŠ¤ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Á¤»óÁ¾·á");
+		System.out.println("ì •ìƒì¢…ë£Œ");
 		try {
 			conn.close();
 		} catch (SQLException e) {

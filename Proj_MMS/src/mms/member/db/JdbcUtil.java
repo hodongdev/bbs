@@ -7,9 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//1. DB°ü·Ã °øÅë ±â´É Å¬·¡½º
+//1. DBê´€ë ¨ ê³µí†µ ê¸°ëŠ¥ í´ë˜ìŠ¤
 public class JdbcUtil {
-//	¸Ş¸ğ¸®¿¡ ½ÇÇàµÈ »óÅÂ·Î Á¸Àç
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -19,13 +18,13 @@ public class JdbcUtil {
 	}
 	
 	public static Connection getConnection() {
-//		¸Ş¸ğ¸®¿¡ ÀÖ´Â ¸Ş¼Òµå È£ÃâÀÌ ÀÏ¾î³ª¾ß ½ÇÇà
+//		ë©”ëª¨ë¦¬ì— ìˆëŠ” ë©”ì†Œë“œ í˜¸ì¶œì´ ì¼ì–´ë‚˜ì•¼ ì‹¤í–‰
 		Connection con = null;
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		try {
 			con = DriverManager.getConnection(url, "javalink", "javalink");
-			con.setAutoCommit(false);//true: commit ½ÇÇà
-			                        //false: commit ÇÒ ¼öÀÖ´Â ½ÃÀÛÁ¡(Transaction ½ÃÀÛ)
+			con.setAutoCommit(false);
+			                        
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +64,7 @@ public class JdbcUtil {
 	}
 	
 	
-//	transaction Ã³¸® ¸Ş¼Òµå
+//	transaction ì²˜ë¦¬ ë©”ì†Œë“œ
 	public static void commit(Connection con) {
 		try {
 			con.commit();//insert,update,delete

@@ -1,14 +1,22 @@
 package mms.member.svc;
-//8-2. È¸¿ø¸ñ·Ï º¸±â ¿äÃ»À» Ã³¸®ÇÏ´Â Business LogicÀÌ ±¸ÇöµÇ´Â Service Å¬·¡½º ±¸Çö
+//8-2. íšŒì›ëª©ë¡ ë³´ê¸° ìš”ì²­ì„ ì²˜ë¦¬í•˜ëŠ” Business Logicì´ êµ¬í˜„ë˜ëŠ” Service í´ë˜ìŠ¤ êµ¬í˜„
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
+import mms.member.dao.MemberDAO;
+import mms.member.db.JdbcUtil;
 import mms.member.vo.Member;
 
 public class MemberListService {
 
 	public ArrayList<Member> getMemberList() {
-		return null;
+		Connection con = JdbcUtil.getConnection();
+		MemberDAO memberDAO = new MemberDAO(con);
+		ArrayList<Member> memberList = memberDAO.selectMemberList();
+		
+		JdbcUtil.close(con);
+		return memberList;
 		
 	}
 }

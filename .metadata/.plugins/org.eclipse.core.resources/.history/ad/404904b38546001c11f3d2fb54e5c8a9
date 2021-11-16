@@ -1,0 +1,25 @@
+package mms.member.action;
+
+import java.util.Scanner;
+
+import mms.member.svc.MemberModifyService;
+import mms.member.svc.MemberRemoveService;
+import mms.member.util.ConsoleUtil;
+import mms.member.vo.Member;
+
+public class MemberRemoveAction implements Action {
+
+	@Override
+	public void execute(Scanner sc)  {
+		ConsoleUtil cu = new ConsoleUtil();
+		String name = cu.getName("수정할", sc);
+		MemberRemoveService memberRemoveService = new MemberRemoveService();
+		boolean isDeleteSuccess = memberRemoveService.removeMember(name);
+		if(isDeleteSuccess)
+			cu.printRemoveSuccessMessage(name);
+		else
+			cu.printRemoveFailMessage(name);;
+
+	}
+
+}

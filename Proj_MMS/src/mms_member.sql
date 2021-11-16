@@ -1,4 +1,4 @@
---javalink 에서 작업
+--javalink/javalink
 
 create table mms_member(
 id number primary key,

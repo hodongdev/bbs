@@ -1,0 +1,16 @@
+package mms.member.action;
+
+import java.util.Scanner;
+
+import mms.member.util.ConsoleUtil;
+
+public class MemberModifyAction implements Action {
+
+	@Override
+	public void execute(Scanner sc) {
+		
+		ConsoleUtil cu = new ConsoleUtil();
+
+	}
+
+}

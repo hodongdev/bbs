@@ -2,21 +2,21 @@ package mms.member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import mms.member.db.JdbcUtil;
 import mms.member.vo.Member;
 
 public class MemberDAO {
-//9. Oracle DB·Î ÇÊ¿äÇÑ SQL±¸¹®À» Àü¼ÛÇÏ´Â Å¬·¡½º ±¸Çö
+//	9. Oracle DBë¡œ í•„ìš”í•œ SQLêµ¬ë¬¸ì„ ì „ì†¡í•˜ëŠ” í´ë˜ìŠ¤ êµ¬í˜„
 	Connection con = null;
 
 	public MemberDAO(Connection con) {
 		this.con = con;
 	}
 
-//	1.È¸¿øµî·Ï
+//	1.
 	public int insertNewMember(Member newMember) {
 		PreparedStatement pstmt = null;
 		int insertCount = 0;
@@ -40,25 +40,106 @@ public class MemberDAO {
 
 	}
 
-//	2.È¸¿ø¸ñ·Ï º¸±â
+//	2.íšŒì›ëª©ë¡ ë³´ê¸°
 	public ArrayList<Member> selectMemberList() {
-		return null;
+		ArrayList<Member> memberList = new ArrayList<>();
+		String sql = "select * from mms_member";
+		Member member = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String name = rs.getString("name");
+				String addr = rs.getString("addr");
+				String nation = rs.getString("nation");
+				String email = rs.getString("email");
+				int age = rs.getInt("age");
+				
+				member = new Member(name, addr, nation, email, age);
+				memberList.add(member);
+			}
+		} catch (SQLException e) {
+			
+		}finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
+		}
+		
+		return memberList;
 	}
 
-//	3.Æ¯Á¤ È¸¿øÁ¤º¸ º¸±â
+//	3.update í• ë•Œ íŠ¹ì • íšŒì› ì •ë³´ ë³´ê¸°
 	public Member selectOldMember(String name) {
-		return null;
+		String sql = "select * from mms_member where name=?";
+		Member member = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String name2 = rs.getString("name");
+				String addr = rs.getString("addr");
+				String nation = rs.getString("nation");
+				String email = rs.getString("email");
+				int age = rs.getInt("age");
+				
+				member = new Member(name2, addr, nation, email, age);
+			}
+		} catch (SQLException e) {
+			
+		}finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
+		}
+		
+		return member;
 	}
 
-//	4.È¸¿øÁ¤º¸ ¼öÁ¤
+//	4.íšŒì› ì •ë³´ ìˆ˜ì •
 	public int updateMember(Member updateMember) {
-		return 0;
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		String sql = "update mms_member set nation=?,addr=?,email=?,age=? where name=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, updateMember.getNation());
+			pstmt.setString(2, updateMember.getAddr());
+			pstmt.setString(3, updateMember.getEmail());
+			pstmt.setInt(4, updateMember.getAge());
+			pstmt.setString(5, updateMember.getName());
+			
+			updateCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+		}finally {
+			JdbcUtil.close(pstmt);
+		}
+		return updateCount;
 
 	}
 
-//	5.È¸¿øÁ¤º¸ »èÁ¦
+//	5.
 	public int deleteMember(String name) {
-		return 0;
+		PreparedStatement pstmt = null;
+		int deleteCount = 0;
+		String sql = "delete mms_member where name=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+		
+			deleteCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+		}finally {
+			JdbcUtil.close(pstmt);
+		}
+		return deleteCount;
 
 	}
 }

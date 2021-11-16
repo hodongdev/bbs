@@ -1,17 +1,40 @@
 package mms.member.svc;
 
+import java.sql.Connection;
+
+import mms.member.dao.MemberDAO;
+import mms.member.db.JdbcUtil;
 import mms.member.vo.Member;
 
-//8-3. È¸¿øÁ¤º¸ ¼öÁ¤ ¿äÃ»À» Ã³¸®ÇÏ´Â Business LogicÀÌ ±¸ÇöµÇ´Â Service Å¬·¡½º ±¸Çö
+//8-3. íšŒì›ì •ë³´ ìˆ˜ì • ìš”ì²­ì„ ì²˜ë¦¬í•˜ëŠ” Business Logicì´ êµ¬í˜„ë˜ëŠ” Service í´ë˜ìŠ¤ êµ¬í˜„
 public class MemberModifyService {
 
-	public Member getOldMember(String name) {
-		return null;
+		
+	public boolean modifyMember(Member updateMember) {
+		boolean isModifySuccess = false;
+		Connection con = JdbcUtil.getConnection();
+		MemberDAO memberDAO = new MemberDAO(con);
+		int updateCount = memberDAO.updateMember(updateMember);
+		if(updateCount > 0) {
+			isModifySuccess = true;
+			JdbcUtil.commit(con);
+		}else {
+			JdbcUtil.rollback(con);
+		}
+		JdbcUtil.close(con);
+		
+		return isModifySuccess;
 		
 	}
 	
-	public boolean modifyMember(Member updateMember) {
-		return false;
+//	ìˆ˜ì •í•  ì´ë¦„ì„ ë¶ˆëŸ¬ì˜¬ë•Œ Member ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+	public Member getOldMember(String name) {
+		Connection con = JdbcUtil.getConnection();
+		MemberDAO memberDAO = new MemberDAO(con);
+		Member member = memberDAO.selectOldMember(name);
+		
+		JdbcUtil.close(con);
+		return member;
 		
 	}
 }

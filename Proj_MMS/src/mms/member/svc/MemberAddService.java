@@ -6,7 +6,7 @@ import mms.member.dao.MemberDAO;
 import mms.member.db.JdbcUtil;
 import mms.member.vo.Member;
 
-//8-1. È¸¿øµî·Ï Business LogicÀÌ ±¸ÇöµÇ´Â Service Å¬·¡½º ±¸Çö
+//8-1. íšŒì›ë“±ë¡ Business Logicì´ êµ¬í˜„ë˜ëŠ” Service í´ë˜ìŠ¤ êµ¬í˜„
 public class MemberAddService {
 
 	public boolean addMember(Member newMember) throws Exception {
